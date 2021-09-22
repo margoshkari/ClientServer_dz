@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Net;
@@ -9,6 +10,7 @@ namespace Server
 {
     public class ServerData
     {
+        public List<Socket> socketClientList;
         public byte[] data;
         public Socket socket;
         public Socket socketClient;
@@ -18,6 +20,7 @@ namespace Server
             data = new byte[256];
             socket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
             iPEndPoint = new IPEndPoint(IPAddress.Parse("127.0.0.1"), 8000);
+            socketClientList = new List<Socket>();
         }
         public ServerData(byte[] data, Socket socket, Socket socketClient, IPEndPoint iPEndPoint)
         {
